@@ -1,0 +1,234 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0px;
+      padding: 0px;
+    }
+    .container{
+      width: 100%;
+      /* background-color: lightpink; */
+      height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card{
+      /* background-color: lightgreen; */
+      width:30%;height: 550px;position: relative;
+      border:solid black 2px ;border-radius: 5px;border-radius: 35px;
+    }
+    .card:hover{
+      /* background-color: yellow;transition: 5s; */
+    }
+    .prof{
+      width: 100%;background-color: unset;text-align: center;border-radius: 35px 35px 0px 0px;
+    }
+    .myimage{
+      text-align: center;
+    border-radius: 100px;
+    width: 185px;
+    padding: 2%;
+    height: 200px;
+    }
+    h1, h4 , h5 {
+      text-align: center;
+    }
+    h4{
+      color: blue;
+    }
+    button{
+      width: 30%;
+      height: 50px;
+      font-size: 30px;
+      border-radius: 35px;
+      background-color: unset;text-align: center;margin: 0px 20px 0px 20px;
+      color: white;
+    background-color:rgb(66,165,245);
+    }
+    .containerbtn{
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      bottom: 20px;
+      right: 0;
+      left: 0;
+    }
+
+    .bluebadge img{
+      position: absolute;
+      top: 11px;
+      right: 15px;
+    }
+    .bluebadge button{
+      top: 0px;
+    }
+    h5{
+      padding: 10px;font-size: 17px;
+    }
+
+    @media (min-width:0) and (max-width:768px) {
+      .card{
+      /* background-color: lightgreen; */
+      width:90%;height: 550px;border-radius: 35px;
+      }
+
+      .myimage{
+        text-align: center;
+      border-radius: 100px;
+      padding: 2%;
+      height: 200px;
+      width: 185px;
+      }
+
+      
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="prof"><img src="" alt="" class="myimage"/></div>
+      <h1 id="title"> </h1>
+      <h4 id="job"> </h4>
+      <h5 id="bio"></h5> 
+      <div class="containerbtn"><button class="pervbtn"><</button><button class="nextbtn">></button></div>
+     
+      <div class="bluebadge"><img src="../images/bluebadge.svg"/></div>
+    </div>
+    <a id="random" style="background-color: blue;font-size:30px;color: white ; position: absolute;bottom:0px;left: 0; right: 0;text-align: center;"class="bluebadge">show Random</a>
+  </div>
+  
+  
+
+  <script>
+
+
+// selecting tags 
+
+let img=document.querySelector('.prof img')
+let name=document.querySelector('#title')
+let job=document.querySelector('#job')
+let bio=document.querySelector('#bio')
+
+let nextbtn=document.querySelector('.nextbtn')
+let pervbtn=document.querySelector('.pervbtn')
+let randombtn=document.querySelector('#random')
+
+
+
+// reviewcardlis obj for storing daataes locally .
+
+let reviewcard=[
+{id:1,
+img:"../images/1.png",
+name:"MAHDI ZAMANIAN",
+job:"WEB DEVELOPER ",
+bio:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem iusto expedita minima, aperiam nobis mollitia? Quos magni corporis explicabo magnam harum fugiat? Magnam veniam officiis excepturi voluptatum consectetur fuga sed!",
+}
+,
+{id:2,
+img:"../images/prof2.jpg",
+name:"Ali ZAMANIAN",
+job:"Test developer ",
+bio:" im tester not an enginner ",
+}
+,
+{id:3,
+img:"../images/4.jpg",
+name:"Sara Wayne callies",
+job:"Actoress ",
+bio:" Iam Sara , the Actoress of Prison Break ",
+},
+{id:4,
+img:"../images/5.jpg",
+name:"wenth Worth miller",
+job:"Actoress ",
+bio:" Iam Michel , the Actor of Prison Break ",
+}
+
+]
+
+
+
+// logics 
+
+// 1- we need an counter variable to jump on the list obj (currentitem)
+// 2-use loaded page function DOMContentLoaded after loading page to read dataes locally 
+// 3-then its time we create a show function throu reading data be abele to change currentitemof the reviewcard[currentitem] also by clicking
+// 4- and then create buttons next and prev
+
+
+
+
+
+let currentitem=0
+
+
+window.addEventListener("DOMContentLoaded",function(e){
+e.preventDefault();
+show(currentitem)
+})
+
+
+function show(currentitem){
+let item = reviewcard[currentitem];
+img.src=item.img;
+name.textContent=item.name
+job.textContent=item.job
+bio.textContent=item.bio
+}
+
+
+
+
+nextbtn.addEventListener('click',(e)=>{
+  e.preventDefault();
+  currentitem++
+  if (currentitem>reviewcard.length-1){
+    currentitem=0
+
+  }
+show(currentitem)
+
+
+
+})
+
+
+pervbtn.addEventListener('click',(e)=>{
+  e.preventDefault();
+  currentitem--
+  if (currentitem<0){
+    currentitem=reviewcard.length-1
+
+  }
+show(currentitem)
+
+
+
+})
+
+
+
+randombtn.addEventListener('click',(e)=>{
+e.preventDefault();
+currentitem=Math.floor(Math.random()*reviewcard.length)
+show(currentitem)
+console.log(currentitem)
+})
+
+
+
+
+
+
+
+
+  </script>
+
+</body>
+</html>

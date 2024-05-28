@@ -1,0 +1,270 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    
+/* body{
+display: flex;
+justify-content: center;
+justify-items: center;
+align-items: center;
+align-items: center;
+} */
+
+.parrent{
+  
+  /* width:100%;
+  display: grid;
+  grid-template-columns: 4fr 4fr 4fr;
+  grid-template-rows: 0fr 0fr 0fr; */
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.containerbox{
+  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+    .item{
+      width:100px;
+      height: 100px;
+      background-color: aqua;
+      margin: 3px;
+      border-radius: 5px;
+    }
+
+.btnstart{
+  position:fixed;
+  bottom: 10%;
+  right: 30%;
+  left: 30%;
+  background-color: white(222, 243, 105);
+  color:black;
+  font-size: 20px;
+  height: 60px;border-radius: 5px;border-color: white;border-width: 5px;
+}
+
+.scorepanel{
+
+  margin: 50px auto;
+  width: 45%;
+  background-color: green;
+  color:white;
+  font-size: 30px;
+  text-align: center;
+  height: 40px;border-radius: 5px;
+}
+
+
+.scorelosepanel{
+  margin: 0px;
+  padding: 20%;
+  position:fixed;
+  top: 0px;
+  bottom: 0px;
+  right: 0%;
+  left: 0%;
+  background-color: red;
+  color:white;
+  font-size: 30px;
+  text-align: center;
+  color:white;
+  
+  border-radius:5px;
+
+}
+
+@media  (min-width:769px){ 
+
+      .containerbox{
+
+      width: 400px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+        
+
+}
+
+
+  </style>
+  </style>
+<br/><br/><br/><br/>
+
+  <div class="parrent">
+
+    <div class="containerbox">
+
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+
+  </div>
+    
+    </div>
+
+    <h3 class="score"></h3>
+    <script>
+
+let count=0
+let score=document.querySelector('.score')
+
+
+         // beging projects 
+
+    let color=["red","blue","pink","orange","green"]
+
+
+
+
+let items =document.querySelectorAll('.item')
+
+
+let target_list=[]
+
+
+function color_changer(){
+
+  let main_color=color[Math.floor(Math.random()*color.length)]
+
+
+  items.forEach(i=>i.style.backgroundColor=main_color)
+
+
+
+  let target=Math.floor(Math.random()*items.length)
+  items[target].style.backgroundColor="yellow"
+
+  target_list.push(target)
+
+  
+
+
+
+}
+
+
+
+color_changer()
+
+
+
+
+
+console.log(target_list)
+
+
+
+
+
+
+
+
+
+
+
+
+items.forEach((i,number)=>{
+
+
+  
+i.addEventListener('click',function (){
+console.log(number)
+
+
+
+
+
+if(number===target_list[0]){
+  count+=2;
+  
+
+  
+ 
+
+}
+else{
+  count-=3;
+ 
+ 
+  
+}
+target_list.shift();
+showscore(count)
+
+
+
+
+        })
+        
+       
+})
+
+
+function showscore(count){
+  if (count<0){
+  count=0
+  
+  score.innerHTML="YOU LOSE THE GAME   ";
+  score.setAttribute("class","scorelosepanel")
+
+
+  btnstart=document.createElement("button")
+  btnstart.setAttribute("class", "btnstart");
+  btnstart.innerHTML=" ReTry";
+  document.body.appendChild(btnstart)
+
+
+  btnstart.addEventListener('click',function(){
+  location.reload();
+})
+
+
+
+  
+
+  }
+  else{
+
+    score.innerHTML="Score : "+count;
+    score.setAttribute("class", "scorepanel");
+
+color_changer()
+
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

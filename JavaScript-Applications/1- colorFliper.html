@@ -1,0 +1,80 @@
+<!-- 
+make an app that
+   changes bg color body 
+   by using a list has got colored codes and you have to across of each index randomly -->
+
+
+   
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+
+.btn{
+
+  height: 200px;
+    position: absolute;
+    right: 0px;
+    bottom: 20px;
+    margin: 7%;
+    border-radius: 0%;
+    font-size: 50px;
+    left: 0px;
+    border: solid black 3px;
+    background-color: white;
+}
+.text{
+  font-size: 30px;
+  width: 100%;
+  text-align: center;
+  margin-top: 65px;
+}
+
+@media (min-width:0px) and (max-width:768px){ 
+    .btn{
+
+    height: 200px;
+    position: absolute;
+    right: 0px;
+    bottom: 20px;
+    margin: 10%;
+    border-radius: 45%;
+    font-size: 30px;
+    left: 0px;
+    border: solid black 3px;
+    background-color: white;
+    }
+}
+
+</style>
+<body>
+  <button class="btn">change themes </button>
+  <div class="text"><h1>background is </h1><span id="myspan">White</span></div>
+  <script>
+
+
+let colors=['yellow','blue','red','pink','green']
+let btn = document.querySelector('.btn')
+let myspan=document.querySelector('#myspan')
+
+
+
+btn.addEventListener('click',()=>{
+  let randomnumbers=getrandomnumbers()
+  console.log(randomnumbers)
+   document.body.style.backgroundColor=colors[randomnumbers]
+   myspan.textContent=colors[randomnumbers]
+
+})
+
+getrandomnumbers=()=>{
+  return Math.floor(Math.random()*colors.length)
+ 
+}
+
+  </script>
+</body>
+</html>

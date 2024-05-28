@@ -1,0 +1,181 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+
+.continer{
+
+  display: flex;
+  justify-content: space-between;
+ 
+}
+
+.h1{
+
+width:72%;height:470px;border-radius: 8px;
+}
+
+
+.h1 img{
+
+width:100%;height:470px;border-radius: 8px;
+}
+.h1 h1{
+  position: fixed;
+  top:6%;
+  left: 5%;
+  background-color: white; width: 200px;border-radius: 6px;text-align: center;
+}
+
+.h1 h3{
+  position: fixed;
+  top:56%;
+  left: 3%;
+  right: 30%;
+  background-color: rgb(252, 191, 191);border-radius: 6px;text-align: center;
+}
+
+
+
+.h2{
+  z-index: 20px;
+width:25%;height:500px;
+}
+.h2 img{
+
+width:100%; height: 30%;display: flex;margin-top: 5px;border-radius: 8px;
+flex-direction: column;align-items: center;justify-content: center;text-align: center;
+}
+
+
+.animation-imgs{
+  opacity: 0.5;
+  transform: translate(10px,0);
+  z-index: -1;
+  animation: animate-imgs 0.10s ease-in-out forwards;
+}
+
+@keyframes animation-imgs {
+  50% {
+     opacity: 0.7;z-index: -1;
+      transform: translate(30px,0);
+  }
+  30% {
+     opacity: 0.9;z-index: -1;
+      transform: translate(15px,0);
+  }
+
+  20% {
+     opacity: 1;z-index: -1;
+      transform: translate(0,0);
+  }
+  
+}
+</style>
+
+
+
+<body>
+  
+<div class="continer">
+
+  <div class="h1"><img  src="" /><h1></h1><h3></h3></div>
+
+
+
+  <div class="h2">
+    
+    <img  class="image" src="" />
+    <img class="image" src="" />
+    <img class="image" src="" />
+  
+  
+  
+  </div>
+
+
+
+
+
+
+</div>
+
+
+<script>
+
+let places=[
+{id:1,name:"Shiraz",description:"we are in Shiraz",src:"./img/1.jpg"},
+{id:1,name:"Esfehan",description:"we are in Esfehan",src:"./img/2.jpg"},
+{id:1,name:"Yazd",description:"we are in Yazd",src:"./img/3.jpg"},
+
+
+]
+
+let bord=document.querySelector('.h1 img')
+let h1=document.querySelector('.h1 h1')
+let h3=document.querySelector('.h1 h3')
+
+
+let images=document.querySelectorAll('.image')
+
+console.log(images)
+
+
+
+
+images.forEach((image,index)=>{
+
+  // load images in h2
+  image.src=places[index].src;
+
+
+
+
+  image.addEventListener('click',()=>{
+    bord.src=places[index].src
+
+    h1.innerHTML=places[index].name
+
+    h3.innerHTML=places[index].description
+
+    bord.classList.add("animation-imgs")
+
+
+    setTimeout(() => {
+      bord.classList.remove("animation-imgs")
+
+
+    }, 50);
+
+
+
+    console.log(index)
+
+
+    
+  })
+
+
+
+
+})
+
+bord.src=places[0].src
+
+
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
